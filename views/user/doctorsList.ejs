@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+<h2>Список лікарів</h2>
+
+<div class="doctors-list">
+    <% if (doctors && doctors.length > 0) { %>
+        <% doctors.forEach(function(doctor) { %>
+            <div class="doctor-card">
+                <h3><%= doctor.name %></h3>
+                <p><strong>Спеціальність:</strong> <%= doctor.specialty %></p>
+                <a href="/doctors/<%= doctor.id %>/schedule">Переглянути розклад</a>
+            </div>
+        <% }); %>
+    <% } else { %>
+        <p>Список лікарів наразі порожній.</p>
+    <% } %>
+</div>
+
+<%- include('../partials/footer') %>

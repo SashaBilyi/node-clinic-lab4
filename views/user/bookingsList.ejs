@@ -1,0 +1,39 @@
+<%- include('../partials/header') %>
+
+<div class="bookings-container">
+    <h2>Історія записів</h2>
+    <p style="color: var(--gray); margin-bottom: 2rem;">Інформація про ваші заплановані та скасовані візити.</p>
+
+    <div class="cards-grid">
+        <% bookings.forEach(function(booking) { %>
+            <% if (booking.isCancelled) { %>
+                <div class="doctor-card cancelled-booking" style="position: relative;">
+                    <span class="badge badge-cancelled" style="position: absolute; top: 1.5rem; right: 1.5rem;">Скасовано системою</span>
+                    <h3 style="margin-top: 0;"><%= booking.doctorName %></h3>
+                    <div style="font-size: 0.95rem; margin-bottom: 1rem;">
+                        <span style="color: var(--gray);">Дата:</span> <%= booking.appointmentDate %><br>
+                        <span style="color: var(--gray);">Час:</span> <%= booking.appointmentTime %>
+                    </div>
+                    <form action="/bookings/cancel/<%= booking.id %>" method="POST">
+                        <button type="submit" class="btn-secondary" style="width: 100%;">Видалити запис</button>
+                    </form>
+                </div>
+            <% } else { %>
+                <div class="doctor-card" style="position: relative; border-left: 4px solid var(--success);">
+                    <span class="badge badge-active" style="position: absolute; top: 1.5rem; right: 1.5rem;">Заплановано</span>
+                    <h3 style="margin-top: 0;"><%= booking.doctorName %></h3>
+                    <div style="font-size: 0.95rem; margin-bottom: 1rem;">
+                        <span style="color: var(--gray);">Дата:</span> <strong><%= booking.appointmentDate %></strong><br>
+                        <span style="color: var(--gray);">Час:</span> <strong><%= booking.appointmentTime %></strong><br>
+                        <span style="color: var(--gray);">Пацієнт:</span> <%= booking.patientName %>
+                    </div>
+                    <form action="/bookings/cancel/<%= booking.id %>" method="POST" onsubmit="return confirm('Підтвердіть скасування візиту')">
+                        <button type="submit" class="btn-danger" style="width: 100%;">Скасувати візит</button>
+                    </form>
+                </div>
+            <% } %>
+        <% }); %>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,191 @@
+[
+  {
+    "doctorId": 5,
+    "date": "2028-10-10",
+    "time": "12:55",
+    "id": 9,
+    "isBooked": false
+  },
+  {
+    "doctorId": 7,
+    "date": "2026-04-18",
+    "time": "12:58",
+    "id": 10,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "09:30",
+    "id": 12,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "10:30",
+    "id": 14,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "11:30",
+    "id": 16,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "12:00",
+    "id": 17,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "12:30",
+    "id": 18,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "13:00",
+    "id": 19,
+    "isBooked": false
+  },
+  {
+    "doctorId": 3,
+    "date": "2026-04-17",
+    "time": "13:30",
+    "id": 20,
+    "isBooked": false
+  },
+  {
+    "doctorId": 4,
+    "date": "2026-04-17",
+    "time": "10:30",
+    "id": 28,
+    "isBooked": false
+  },
+  {
+    "doctorId": 4,
+    "date": "2026-04-17",
+    "time": "11:30",
+    "id": 30,
+    "isBooked": false
+  },
+  {
+    "doctorId": 4,
+    "date": "2026-04-17",
+    "time": "12:30",
+    "id": 32,
+    "isBooked": false
+  },
+  {
+    "doctorId": 4,
+    "date": "2026-04-17",
+    "time": "13:30",
+    "id": 34,
+    "isBooked": false
+  },
+  {
+    "doctorId": 4,
+    "date": "2026-04-17",
+    "time": "14:00",
+    "id": 35,
+    "isBooked": false
+  },
+  {
+    "doctorId": 4,
+    "date": "2026-04-17",
+    "time": "15:00",
+    "id": 37,
+    "isBooked": false
+  },
+  {
+    "doctorId": 1,
+    "date": "2026-04-18",
+    "time": "15:30",
+    "id": 69,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-20",
+    "time": "13:00",
+    "id": 82,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-20",
+    "time": "15:00",
+    "id": 86,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-20",
+    "time": "15:30",
+    "id": 87,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-22",
+    "time": "14:00",
+    "id": 90,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-22",
+    "time": "14:30",
+    "id": 91,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-22",
+    "time": "15:00",
+    "id": 92,
+    "isBooked": false
+  },
+  {
+    "doctorId": 6,
+    "date": "2026-04-22",
+    "time": "15:30",
+    "id": 93,
+    "isBooked": false
+  },
+  {
+    "doctorId": 2,
+    "date": "2026-05-01",
+    "time": "08:00",
+    "id": 94,
+    "isBooked": false
+  },
+  {
+    "doctorId": 2,
+    "date": "2026-05-01",
+    "time": "08:30",
+    "id": 95,
+    "isBooked": false
+  },
+  {
+    "doctorId": 2,
+    "date": "2026-05-01",
+    "time": "09:00",
+    "id": 96,
+    "isBooked": false
+  },
+  {
+    "doctorId": 2,
+    "date": "2026-05-01",
+    "time": "09:30",
+    "id": 97,
+    "isBooked": false
+  }
+]

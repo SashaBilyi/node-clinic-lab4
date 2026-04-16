@@ -1,0 +1,122 @@
+<%- include('../partials/header') %>
+
+<div class="admin-container">
+    <div class="header-section">
+        <h2>Панель керування реєстратурою</h2>
+        <p class="text-muted">Професійний інтерфейс управління персоналом та графіками прийомів (SQL & Transactions)</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 2rem;">
+        
+        <div class="admin-card">
+            <h3>Реєстрація нового фахівця</h3>
+            <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem;">Внесення нового лікаря до штату поліклініки.</p>
+            <form action="/admin/doctors/add" method="POST">
+                <div class="form-group">
+                    <label>Повне ім'я:</label>
+                    <input type="text" name="name" placeholder="Прізвище Ім'я По батькові" required>
+                </div>
+                <div class="form-group">
+                    <label>Спеціалізація:</label>
+                    <input type="text" name="specialty" placeholder="Наприклад: Кардіолог" required>
+                </div>
+                <button type="submit" class="btn-success" style="width: 100%; margin-top: 0.5rem;">Зареєструвати лікаря</button>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h3>Генерація графіку прийомів</h3>
+            <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem;">Створення серії часових слотів для обраного спеціаліста.</p>
+            <form action="/admin/add" method="POST">
+                <div class="form-group">
+                    <label>Спеціаліст:</label>
+                    <select name="doctorId" required>
+                        <option value="">Оберіть зі списку...</option>
+                        <% doctors.forEach(function(doc) { %>
+                            <option value="<%= doc.id %>"><%= doc.name %></option>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Дата:</label>
+                    <input type="date" name="date" required>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <label>З:</label>
+                        <input type="time" name="startTime" value="08:00" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>До:</label>
+                        <input type="time" name="endTime" value="16:00" required>
+                    </div>
+                    <div style="flex: 1;">
+                        <label>Хв:</label>
+                        <input type="number" name="interval" value="30" min="10" required>
+                    </div>
+                </div>
+                <button type="submit" class="btn-success" style="width: 100%; margin-top: 1rem;">Сформувати зміну</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="admin-card">
+        <h3>Штатний розклад та активний персонал</h3>
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Фахівець</th>
+                    <th style="width: 15%;">Спеціальність</th>
+                    <th>Актуальний розклад (Дата | Час)</th>
+                    <th style="width: 180px; text-align: center;">Дії</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (doctors && doctors.length > 0) { %>
+                    <% doctors.forEach(function(doctor) { %>
+                        <tr>
+                            <td>
+                                <strong><%= doctor.name %></strong>
+                                <div style="font-size: 0.7rem; color: var(--gray);">Обліковий запис №<%= doctor.id %></div>
+                            </td>
+                            <td><span class="badge badge-specialty"><%= doctor.specialty %></span></td>
+                            <td>
+                                <div class="admin-slots-list">
+                                    <% if (doctor.schedules && doctor.schedules.length > 0) { %>
+                                        <% doctor.schedules.forEach(function(s) { %>
+                                            <div class="slot-edit-tag <%= s.isBooked ? 'is-booked' : 'is-free' %>">
+                                                <span><%= s.date %> | <%= s.time %></span>
+                                                <form action="/admin/delete/<%= s.id %>" method="POST" style="display:inline;">
+                                                    <button type="submit" class="btn-remove" title="Видалити слот">&times;</button>
+                                                </form>
+                                            </div>
+                                        <% }); %>
+                                    <% } else { %>
+                                        <span class="text-muted" style="font-size: 0.85rem; font-style: italic;">Графік не сформовано</span>
+                                    <% } %>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="display: flex; gap: 8px; justify-content: center;">
+                                    <a href="/admin/doctors/edit/<%= doctor.id %>" class="btn-secondary" style="padding: 4px 8px; font-size: 0.8rem; text-decoration: none;">Редагувати</a>
+                                    
+                                    <form action="/admin/doctors/delete/<%= doctor.id %>" method="POST">
+                                        <button type="submit" class="btn-danger" style="padding: 4px 8px; font-size: 0.8rem;">Видалити</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <% }); %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4" style="text-align: center; padding: 2rem; color: var(--gray);">
+                            База даних персоналу порожня. Скористайтеся формою реєстрації.
+                        </td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

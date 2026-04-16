@@ -1,0 +1,47 @@
+<%- include('../partials/header') %>
+
+<div class="schedule-container">
+    <h2>Розклад прийомів: <%= doctor.name %></h2>
+    <p class="specialty"><span class="badge badge-specialty"><%= doctor.specialty %></span></p>
+
+    <% if (schedules && schedules.length > 0) { %>
+        <form action="/bookings/add" method="POST" class="booking-form-centered">
+            
+            <% 
+               const groupedSchedules = {};
+               schedules.forEach(s => {
+                   if(!groupedSchedules[s.date]) groupedSchedules[s.date] = [];
+                   groupedSchedules[s.date].push(s);
+               });
+            %>
+
+            <% for (let date in groupedSchedules) { %>
+                <h3 class="date-header"><%= date %></h3>
+                <div class="slots-grid">
+                    <% groupedSchedules[date].forEach(function(schedule) { %>
+                        <label class="time-slot <%= schedule.isBooked ? 'booked' : 'free' %>" title="<%= schedule.isBooked ? 'Час зайнято' : 'Час вільний' %>">
+                            <input type="radio" name="scheduleId" value="<%= schedule.id %>" <%= schedule.isBooked ? 'disabled' : 'required' %>>
+                            <span class="time-text"><%= schedule.time %></span>
+                        </label>
+                    <% }); %>
+                </div>
+            <% } %>
+
+            <div class="patient-info-box">
+                <h4>Оформлення запису</h4>
+                <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 1rem;">Оберіть вільний час у таблиці вище та вкажіть свої дані для реєстрації.</p>
+                <label style="font-size: 0.85rem; font-weight: 500;">ПІБ Пацієнта:</label>
+                <input type="text" name="patientName" required>
+                <button type="submit" class="btn-success" style="width: 100%; margin-top: 0.5rem;">Підтвердити реєстрацію</button>
+            </div>
+        </form>
+    <% } else { %>
+        <div class="admin-card">
+            <p class="text-muted">На даний момент вільних годин для запису немає.</p>
+        </div>
+    <% } %>
+    
+    <a href="/doctors" class="btn-secondary" style="margin-top: 1rem;">Повернутися до списку</a>
+</div>
+
+<%- include('../partials/footer') %>

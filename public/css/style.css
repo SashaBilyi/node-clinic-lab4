@@ -1,0 +1,222 @@
+:root {
+    --primary: #2C3E50;   
+    --primary-light: #34495E;
+    --accent: #3498DB;    
+    --success: #27AE60;   
+    --danger: #C0392B;    
+    --dark: #1A252F;
+    --light: #F8F9FA;
+    --gray: #7F8C8D;
+    --border: #E0E6ED;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #F4F6F8;
+    color: #333;
+}
+
+header {
+    background-color: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--accent);
+}
+
+header h1 { margin: 0; font-size: 1.4rem; font-weight: 600; letter-spacing: 0.5px; }
+
+nav a {
+    color: #BDC3C7;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+}
+
+nav a:hover { color: white; }
+
+main { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+
+footer {
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 3rem;
+    background-color: var(--dark);
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+h2, h3, h4 { color: var(--primary); font-weight: 600; }
+
+
+.doctor-card, .admin-card, .patient-info-box {
+    background: white;
+    border-radius: 4px;
+    padding: 1.5rem;
+    border: 1px solid var(--border);
+    margin-bottom: 1.5rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+
+button, .btn-secondary {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: white;
+    transition: background 0.2s;
+}
+
+button { background-color: var(--accent); }
+button:hover { background-color: #2980B9; }
+.btn-success { background-color: var(--success); }
+.btn-success:hover { background-color: #219653; }
+.btn-danger { background-color: var(--danger); }
+.btn-danger:hover { background-color: #A93226; }
+.btn-secondary { background-color: var(--gray); }
+
+input, select {
+    padding: 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0.8rem;
+    font-family: inherit;
+    background-color: #FAFAFA;
+}
+input:focus, select:focus { border-color: var(--accent); outline: none; }
+
+
+.date-header { margin-top: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; color: var(--gray); font-size: 1.1rem;}
+.slots-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
+    text-align: center;
+    user-select: none;
+    background: white;
+}
+.time-slot input[type="radio"] { display: none; }
+.time-text { font-size: 1.1rem; font-weight: 500; color: var(--primary); }
+
+.time-slot.free:hover { border-color: var(--success); color: var(--success); }
+.time-slot.free:has(input[type="radio"]:checked) {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+.time-slot.free:has(input[type="radio"]:checked) .time-text { color: white; }
+
+.time-slot.booked {
+    background-color: #F8F9FA;
+    border-color: var(--border);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+.time-slot.booked .time-text { text-decoration: line-through; color: var(--gray); }
+
+
+.admin-table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--border); }
+.admin-table th, .admin-table td { padding: 0.8rem 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+.admin-table th { background-color: var(--light); font-weight: 600; color: var(--primary-light); font-size: 0.9rem; text-transform: uppercase; }
+
+
+.badge { padding: 3px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;}
+.badge-active { background: #E8F8F5; color: var(--success); border: 1px solid #A3E4D7; }
+.badge-cancelled { background: #FDEDEC; color: var(--danger); border: 1px solid #F5B7B1; }
+.badge-specialty { background: var(--light); color: var(--gray); border: 1px solid var(--border); }
+
+
+.cancelled-booking { background-color: #F8F9FA; border: 1px solid var(--border); }
+.cancelled-booking h3, .cancelled-booking p { color: var(--gray); }
+
+
+.admin-slots-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 4px 0;
+}
+
+
+.slot-edit-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid var(--border);
+    background: white;
+}
+
+.slot-edit-tag.is-free {
+    background-color: #EBF7EE;
+    color: #1E6635;
+    border-color: #C3E6CB;
+}
+
+.slot-edit-tag.is-booked {
+    background-color: #F8F9FA;
+    color: var(--gray);
+    opacity: 0.7;
+    border-style: dashed;
+}
+
+
+.btn-remove {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-remove:hover {
+    color: var(--danger);
+}
+
+.admin-form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.admin-form-inline input, .admin-form-inline select {
+    margin-bottom: 0;
+    flex: 1;
+    min-width: 120px;
+}
